@@ -1,4 +1,7 @@
+// import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:my_web/category_page.dart' as cat;
+import 'category_list_page.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -12,11 +15,54 @@ class _LoginState extends State<Login> {
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  // void _login() {
+  //   if (_formKey.currentState!.validate()) {
+  //     ScaffoldMessenger.of(context).showSnackBar(
+  //       const SnackBar(content: Text('در حال ورود...')),
+  //     );
+  //   }
+  // }
+
   void _login() {
     if (_formKey.currentState!.validate()) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('در حال ورود...')),
-      );
+      final username = _usernameController.text.trim();
+      final password = _passwordController.text.trim();
+
+      if (username == 'mhmd' && password == 'mhmd') {
+        //   showDialog(
+        //     context: context,
+        //     builder: (context) => AlertDialog(
+        //       title: const Text('خوش آمدید'),
+        //       content: Text('سلام $username! ورود شما موفقیت‌آمیز بود.'),
+        //       actions: [
+        //         TextButton(
+        //           onPressed: () => Navigator.pop(context),
+        //           child: const Text('باشه'),
+        //         ),
+        //       ],
+        //     ),
+        //   );
+        // } else {
+        //   showDialog(
+        //     context: context,
+        //     builder: (context) => AlertDialog(
+        //       title: const Text('خطا'),
+        //       content: const Text('نام کاربری یا رمز عبور اشتباه است.'),
+        //       actions: [
+        //         TextButton(
+        //           onPressed: () => Navigator.pop(context),
+        //           child: const Text('تلاش دوباره'),
+        //         ),
+        //       ],
+        //     ),
+        // );
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CategoryListPage(),
+          ),
+        );
+      }
     }
   }
 
